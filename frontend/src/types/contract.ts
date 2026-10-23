@@ -208,3 +208,20 @@ export interface HistoryResponse {
   project_count: number;
   projects: HistoricalProjectItem[];
 }
+
+
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  avatar_url?: string | null;
+  role: string;
+  provider: string;
+  created_at: string;
+}
+
+export interface AuthResponse {
+  access_token: string;
+  token_type: string;
+  user: User;
+}

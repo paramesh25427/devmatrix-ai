@@ -9,6 +9,7 @@ from backend.db import engine, Base, SessionLocal
 from backend.routers.projects import router as projects_router
 from backend.routers.team import router as team_router, seed_developers_if_empty
 from backend.routers.delivery import router as delivery_router
+from backend.routers.auth import router as auth_router
 from backend.learning import seed_past_projects_if_empty
 
 # Create all database tables
@@ -61,7 +62,7 @@ async def custom_http_exception_handler(request: Request, exc: HTTPException):
 @app.exception_handler(RequestValidationError)
 async def custom_validation_exception_handler(request: Request, exc: RequestValidationError):
     errors = exc.errors()
-    msg = "; ".join([f"{e.get('loc', [''])[ -1]}: {e.get('msg', 'validation error')}" for e in errors])
+    msg = "; ".join([f"{e.get('loc', [''])[-1]}: {e.get('msg', 'validation error')}" for e in errors])
     return JSONResponse(
         status_code=422,
         content={"error": "validation_error", "message": f"Input validation failed: {msg}"}
@@ -77,6 +78,7 @@ def healthcheck():
     }
 
 # Mount routers
+app.include_router(auth_router)
 app.include_router(projects_router)
 app.include_router(team_router)
 app.include_router(delivery_router)

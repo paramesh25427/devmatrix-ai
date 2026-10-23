@@ -10,6 +10,10 @@ class Settings(BaseSettings):
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./devmatrix.db")
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
     GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    GOOGLE_CLIENT_ID: str = os.getenv("GOOGLE_CLIENT_ID", "")
+    JWT_SECRET: str = os.getenv("JWT_SECRET", "devmatrix-secret-jwt-key-2026-viksitthon-edition-ultra-secure-key")
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7
     DEFAULT_WEEKLY_RATE: float = 25000.0
     ASSUMED_TEAM_SIZE: float = 2.4
     COMPLEXITY_LOW_PTS: int = 1

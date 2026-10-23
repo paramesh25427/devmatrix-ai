@@ -113,3 +113,17 @@ class PastProject(Base):
     domain = Column(String(100), nullable=False)
     is_seed = Column(Boolean, nullable=False, default=False)
     created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(String(64), primary_key=True, index=True)
+    email = Column(String(255), unique=True, index=True, nullable=False)
+    name = Column(String(255), nullable=False)
+    avatar_url = Column(String(512), nullable=True)
+    role = Column(String(64), nullable=False, default="Delivery Manager") # Delivery Manager, Tech Lead, Project Executive
+    provider = Column(String(32), nullable=False, default="google") # google, demo
+    google_id = Column(String(128), unique=True, nullable=True, index=True)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
+    updated_at = Column(DateTime(timezone=True), default=utc_now, onupdate=utc_now, nullable=False)

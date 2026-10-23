@@ -272,3 +272,29 @@ class HistoryResponse(BaseModel):
     average_overrun_pct: float
     project_count: int
     projects: List[HistoricalProjectItem]
+
+
+# --- Authentication Schemas ---
+class GoogleAuthRequest(BaseModel):
+    credential: str
+    role: Optional[str] = "Delivery Manager"
+
+class DemoLoginRequest(BaseModel):
+    email: Optional[str] = "manager@devmatrix.ai"
+    name: Optional[str] = "Alex Morgan"
+    role: Optional[str] = "Delivery Manager"
+
+class UserResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    email: str
+    name: str
+    avatar_url: Optional[str] = None
+    role: str
+    provider: str
+    created_at: datetime
+
+class AuthResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    user: UserResponse

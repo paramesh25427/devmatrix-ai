@@ -8,7 +8,9 @@ import type {
   TaskItem,
   AlertItem,
   HistoryResponse,
-  DeveloperProfile
+  DeveloperProfile,
+  User,
+  AuthResponse
 } from '../types/contract';
 import { MOCK_PROJECTS } from './mock/sampleData';
 
@@ -20,7 +22,43 @@ const api = axios.create({
   timeout: 30000,
 });
 
+// Attach Authorization Bearer token if present
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('devmatrix_token');
+  if (token && config.headers) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export const apiClient = {
+  // Authentication
+  async loginWithGoogle(credential: string, role: string = 'Delivery Manager'): Promise<AuthResponse> {
+    const res = await api.post('/auth/google', { credential, role });
+    if (res.data?.access_token) {
+      localStorage.setItem('devmatrix_token', res.data.access_token);
+    }
+    return res.data;
+  },
+
+  async demoLogin(email?: string, name?: string, role: string = 'Delivery Manager'): Promise<AuthResponse> {
+    const res = await api.post('/auth/demo-login', { email, name, role });
+    if (res.data?.access_token) {
+      localStorage.setItem('devmatrix_token', res.data.access_token);
+    }
+    return res.data;
+  },
+
+  async getMe(): Promise<User> {
+    const res = await api.get('/auth/me');
+    return res.data;
+  },
+
+  logout(): void {
+    localStorage.removeItem('devmatrix_token');
+    localStorage.removeItem('devmatrix_user');
+  },
+
   async getHealth(): Promise<{ status: string; app: string }> {
     try {
       const res = await api.get('/health');
