@@ -1,0 +1,46 @@
+[
+  {
+    "id": "PAST-01",
+    "name": "Apollo Clinic Telehealth Portal",
+    "estimated_weeks": 10.0,
+    "actual_weeks": 12.0,
+    "estimated_cost": 287500.0,
+    "actual_cost": 345000.0,
+    "overrun_pct": 0.20,
+    "domain": "Healthcare",
+    "is_seed": true
+  },
+  {
+    "id": "PAST-02",
+    "name": "QuickCart Omnichannel Delivery",
+    "estimated_weeks": 14.0,
+    "actual_weeks": 16.0,
+    "estimated_cost": 402500.0,
+    "actual_cost": 460000.0,
+    "overrun_pct": 0.1429,
+    "domain": "E-Commerce",
+    "is_seed": true
+  },
+  {
+    "id": "PAST-03",
+    "name": "FinPay Unified UPI Gateway",
+    "estimated_weeks": 8.0,
+    "actual_weeks": 10.0,
+    "estimated_cost": 230000.0,
+    "actual_cost": 287500.0,
+    "overrun_pct": 0.25,
+    "domain": "Fintech",
+    "is_seed": true
+  },
+  {
+    "id": "PAST-04",
+    "name": "BharatLogistics Fleet Dispatch",
+    "estimated_weeks": 12.0,
+    "actual_weeks": 14.0,
+    "estimated_cost": 345000.0,
+    "actual_cost": 402500.0,
+    "overrun_pct": 0.1667,
+    "domain": "Logistics",
+    "is_seed": true
+  }
+]

@@ -33,6 +33,16 @@ app.add_exception_handler(RequestValidationError, validation_exception_handler)
 # Mount API routers
 app.include_router(api_router, prefix=settings.API_V1_PREFIX)
 
+try:
+    from backend.routers.projects import router as canonical_projects_router
+    from backend.routers.team import router as canonical_team_router
+    from backend.routers.delivery import router as canonical_delivery_router
+    app.include_router(canonical_projects_router)
+    app.include_router(canonical_team_router)
+    app.include_router(canonical_delivery_router)
+except Exception as e:
+    print(f"Notice: canonical routers could not be imported in backend.app.main: {e}")
+
 @app.get("/health")
 def healthcheck():
     return {"status": "ok", "app": settings.PROJECT_NAME, "version": "1.0.0"}

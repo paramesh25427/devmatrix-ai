@@ -1,0 +1,150 @@
+[
+  {
+    "id": "DEV-01",
+    "name": "Aarav Sharma",
+    "role": "Lead Full-Stack Engineer",
+    "experience_years": 7.5,
+    "skills": {
+      "React": 5,
+      "TypeScript": 5,
+      "Python": 4,
+      "FastAPI": 4,
+      "PostgreSQL": 4,
+      "Docker": 4,
+      "testing": 4
+    },
+    "free_capacity_pct": 80,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-02",
+    "name": "Priya Nair",
+    "role": "Senior Backend Architect",
+    "experience_years": 8.0,
+    "skills": {
+      "Python": 5,
+      "FastAPI": 5,
+      "PostgreSQL": 5,
+      "Docker": 4,
+      "payments": 5,
+      "testing": 4
+    },
+    "free_capacity_pct": 70,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-03",
+    "name": "Rohan Deshmukh",
+    "role": "Frontend Specialist",
+    "experience_years": 5.0,
+    "skills": {
+      "React": 5,
+      "TypeScript": 5,
+      "UI design": 4,
+      "testing": 3
+    },
+    "free_capacity_pct": 90,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-04",
+    "name": "Ananya Sen",
+    "role": "DevOps & Cloud Engineer",
+    "experience_years": 6.0,
+    "skills": {
+      "Docker": 5,
+      "DevOps": 5,
+      "PostgreSQL": 3,
+      "Python": 3,
+      "testing": 3
+    },
+    "free_capacity_pct": 60,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-05",
+    "name": "Vikram Patel",
+    "role": "Fintech & Payment Integration Engineer",
+    "experience_years": 6.5,
+    "skills": {
+      "payments": 5,
+      "Python": 4,
+      "FastAPI": 4,
+      "PostgreSQL": 4,
+      "testing": 4
+    },
+    "free_capacity_pct": 85,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-06",
+    "name": "Kavita Rao",
+    "role": "QA & Automation Engineer",
+    "experience_years": 4.5,
+    "skills": {
+      "testing": 5,
+      "Python": 3,
+      "TypeScript": 3,
+      "Docker": 3
+    },
+    "free_capacity_pct": 100,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-07",
+    "name": "Siddharth Verma",
+    "role": "UI/UX & Frontend Developer",
+    "experience_years": 4.0,
+    "skills": {
+      "UI design": 5,
+      "React": 4,
+      "TypeScript": 4
+    },
+    "free_capacity_pct": 75,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-08",
+    "name": "Neha Joshi",
+    "role": "Database & Backend Engineer",
+    "experience_years": 5.5,
+    "skills": {
+      "PostgreSQL": 5,
+      "Python": 4,
+      "FastAPI": 3,
+      "Docker": 3
+    },
+    "free_capacity_pct": 65,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-09",
+    "name": "Aditya Kulkarni",
+    "role": "Junior Full-Stack Engineer",
+    "experience_years": 2.0,
+    "skills": {
+      "React": 3,
+      "TypeScript": 3,
+      "Python": 3,
+      "testing": 3
+    },
+    "free_capacity_pct": 15,
+    "flagged_skills": []
+  },
+  {
+    "id": "DEV-10",
+    "name": "Divya Menon",
+    "role": "Full-Stack Engineer",
+    "experience_years": 4.0,
+    "skills": {
+      "React": 4,
+      "TypeScript": 4,
+      "Python": 4,
+      "FastAPI": 4,
+      "PostgreSQL": 3,
+      "payments": 3
+    },
+    "free_capacity_pct": 80,
+    "flagged_skills": []
+  }
+]

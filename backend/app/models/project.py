@@ -7,7 +7,7 @@ def utc_now():
     return datetime.now(timezone.utc)
 
 class Project(Base):
-    __tablename__ = "projects"
+    __tablename__ = "legacy_projects"
 
     project_id = Column(String(32), primary_key=True)
     org_id = Column(String(32), ForeignKey("organizations.org_id", ondelete="RESTRICT"), nullable=False)
@@ -33,7 +33,7 @@ class ProjectRequirement(Base):
     __tablename__ = "project_requirements"
 
     requirement_id = Column(String(32), primary_key=True)
-    project_id = Column(String(32), ForeignKey("projects.project_id", ondelete="CASCADE"), nullable=False)
+    project_id = Column(String(32), ForeignKey("legacy_projects.project_id", ondelete="CASCADE"), nullable=False)
     source_document_id = Column(String(32), nullable=True)
     type = Column(String(30), nullable=False)
     title = Column(String(255), nullable=False)
@@ -57,7 +57,7 @@ class RequirementClarification(Base):
     __tablename__ = "requirement_clarifications"
 
     clarification_id = Column(String(32), primary_key=True)
-    project_id = Column(String(32), ForeignKey("projects.project_id", ondelete="CASCADE"), nullable=False)
+    project_id = Column(String(32), ForeignKey("legacy_projects.project_id", ondelete="CASCADE"), nullable=False)
     requirement_id = Column(String(32), ForeignKey("project_requirements.requirement_id", ondelete="CASCADE"), nullable=True)
     question = Column(String(1000), nullable=False)
     impact_description = Column(String(1000), nullable=False)

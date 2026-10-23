@@ -10,7 +10,7 @@ class FeasibilityAnalysisRun(Base):
     __tablename__ = "feasibility_analysis_runs"
 
     run_id = Column(String(32), primary_key=True)
-    project_id = Column(String(32), ForeignKey("projects.project_id", ondelete="CASCADE"), nullable=False)
+    project_id = Column(String(32), ForeignKey("legacy_projects.project_id", ondelete="CASCADE"), nullable=False)
     ruleset_version = Column(String(20), nullable=False, default="1.0.0")
     overall_status = Column(String(30), nullable=False)
     overall_score = Column(Numeric(5, 2), nullable=False)
@@ -58,7 +58,7 @@ class FeasibilityReport(Base):
 
     report_id = Column(String(32), primary_key=True)
     run_id = Column(String(32), ForeignKey("feasibility_analysis_runs.run_id", ondelete="CASCADE"), nullable=False)
-    project_id = Column(String(32), ForeignKey("projects.project_id", ondelete="CASCADE"), nullable=False)
+    project_id = Column(String(32), ForeignKey("legacy_projects.project_id", ondelete="CASCADE"), nullable=False)
     executive_summary = Column(String(2000), nullable=False)
     full_report_payload = Column(JSON, nullable=False)
     recommended_action = Column(String(50), nullable=False)

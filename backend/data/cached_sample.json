@@ -1,0 +1,206 @@
+{
+  "citycare_hospitals": {
+    "project_name": "CityCare Hospitals Appointment & Consultation Platform",
+    "summary": "Comprehensive web and mobile solution for CityCare Hospitals enabling multi-speciality doctor appointment booking, real-time availability tracking, online consultation fee collection, automated SMS/email alerts, and administrative analytics handling 2,000 daily bookings with HIPAA-compliant data security.",
+    "requirements": [
+      {
+        "id": 1,
+        "text": "Patient registration and authentication using phone OTP and email verification",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "medium",
+        "integration": false
+      },
+      {
+        "id": 2,
+        "text": "Doctor directory search filtered by speciality, hospital branch, consultation fee, and geolocation",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "medium",
+        "integration": false
+      },
+      {
+        "id": 3,
+        "text": "Real-time doctor calendar slot availability engine with concurrency lock during checkout",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "high",
+        "integration": false
+      },
+      {
+        "id": 4,
+        "text": "Appointment scheduling, instant cancellation, and patient rescheduling workflows",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "medium",
+        "integration": false
+      },
+      {
+        "id": 5,
+        "text": "Payment gateway integration (UPI, cards, netbanking) with automated refunds on cancellation",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "high",
+        "integration": true
+      },
+      {
+        "id": 6,
+        "text": "Automated transactional SMS and email notification service for appointment confirmations and reminders",
+        "type": "functional",
+        "priority": "medium",
+        "complexity": "low",
+        "integration": true
+      },
+      {
+        "id": 7,
+        "text": "Doctor portal for dynamic consultation hours, leave management, and daily appointment roster",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "medium",
+        "integration": false
+      },
+      {
+        "id": 8,
+        "text": "Hospital administration dashboard with booking analytics, doctor occupancy, and revenue reconciliation",
+        "type": "functional",
+        "priority": "medium",
+        "complexity": "medium",
+        "integration": false
+      },
+      {
+        "id": 9,
+        "text": "Scalable architecture supporting peak throughput of 2,000 daily bookings without latency degradation",
+        "type": "non_functional",
+        "priority": "high",
+        "complexity": "high",
+        "integration": false
+      },
+      {
+        "id": 10,
+        "text": "Patient health data encryption at rest and in transit with role-based access audit logs",
+        "type": "non_functional",
+        "priority": "high",
+        "complexity": "medium",
+        "integration": false
+      }
+    ],
+    "gaps": [
+      "No specification on patient Electronic Health Record (EHR) integration standard (e.g. ABDM / HL7 FHIR)",
+      "Unspecified international patient currency requirements"
+    ],
+    "conflicts": [
+      "Instant cancellation policy conflicts with payment gateway settlement SLA (T+2 days) for direct refunds"
+    ],
+    "risks": [
+      {
+        "title": "Payment Gateway Concurrency & Double Booking",
+        "severity": "high",
+        "mitigation": "Implement distributed Redis reservation locks on appointment slots with a 10-minute hold expiry"
+      },
+      {
+        "title": "SMS/Email Delivery Failures during Network Outages",
+        "severity": "medium",
+        "mitigation": "Deploy asynchronous background message queue with exponential backoff retry"
+      },
+      {
+        "title": "Patient Data Regulatory Non-Compliance",
+        "severity": "high",
+        "mitigation": "Enforce field-level encryption for PII and enable comprehensive audit logging for all record views"
+      }
+    ],
+    "required_skills": [
+      { "name": "Python", "mandatory": true },
+      { "name": "FastAPI", "mandatory": true },
+      { "name": "React", "mandatory": true },
+      { "name": "TypeScript", "mandatory": true },
+      { "name": "PostgreSQL", "mandatory": true },
+      { "name": "payments", "mandatory": true },
+      { "name": "Docker", "mandatory": false },
+      { "name": "testing", "mandatory": true }
+    ],
+    "tech_stack": ["FastAPI", "React", "TypeScript", "PostgreSQL", "Redis", "Docker"],
+    "milestones": [
+      { "name": "Core Patient Auth & Doctor Directory", "weeks": 3 },
+      { "name": "Slot Availability & Booking State Machine", "weeks": 3 },
+      { "name": "Payment Gateway & SMS Notification Integration", "weeks": 3 },
+      { "name": "Admin Portal, Security Auditing & Load Testing", "weeks": 3 }
+    ]
+  },
+  "retail_shop": {
+    "project_name": "Retail Shop Hybrid Commerce Suite",
+    "summary": "Preliminary requirement outline for an omnichannel retail store requesting an online e-commerce shop with offline in-store POS synchronization, modern UI, and quick checkout.",
+    "requirements": [
+      {
+        "id": 1,
+        "text": "Online product catalog with search, categorization, and pricing",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "medium",
+        "integration": false
+      },
+      {
+        "id": 2,
+        "text": "Offline client-side operation with local data caching",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "high",
+        "integration": false
+      },
+      {
+        "id": 3,
+        "text": "Bidirectional inventory sync between offline POS and central cloud database",
+        "type": "functional",
+        "priority": "high",
+        "complexity": "high",
+        "integration": true
+      },
+      {
+        "id": 4,
+        "text": "Payment processing supporting card swipe and online UPI",
+        "type": "functional",
+        "priority": "medium",
+        "complexity": "medium",
+        "integration": true
+      }
+    ],
+    "gaps": [
+      "No delivery deadline specified by client",
+      "No defined maximum or minimum budget envelope",
+      "Offline sync conflict resolution strategy (last-write-wins vs FIFO) is completely unspecified",
+      "Specific competitor feature benchmarks are undefined"
+    ],
+    "conflicts": [
+      "Online real-time payment validation directly conflicts with offline-first disconnected sales requirements"
+    ],
+    "risks": [
+      {
+        "title": "Inventory Overselling under Offline Disconnection",
+        "severity": "high",
+        "mitigation": "Define safety stock buffers and strict offline credit limits per store terminal"
+      },
+      {
+        "title": "Unbounded Project Scope due to Ambiguous Requirements",
+        "severity": "high",
+        "mitigation": "Hold formal requirements discovery workshop to fix MVP scope and freeze deadline"
+      },
+      {
+        "title": "Offline Data Sync Data Corruption",
+        "severity": "high",
+        "mitigation": "Implement CRDTs (Conflict-free Replicated Data Types) or event-sourcing audit log"
+      }
+    ],
+    "required_skills": [
+      { "name": "React", "mandatory": true },
+      { "name": "TypeScript", "mandatory": true },
+      { "name": "Python", "mandatory": true },
+      { "name": "PostgreSQL", "mandatory": true },
+      { "name": "payments", "mandatory": false }
+    ],
+    "tech_stack": ["React", "TypeScript", "FastAPI", "SQLite/IndexedDB", "PostgreSQL"],
+    "milestones": [
+      { "name": "Scope Clarification & Technical Architecture", "weeks": 2 },
+      { "name": "Product Catalog & Local Storage Prototype", "weeks": 3 },
+      { "name": "Sync Protocol & Edge Validation", "weeks": 3 }
+    ]
+  }
+}
